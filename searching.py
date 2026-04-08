@@ -46,6 +46,35 @@ def linear_search(sequential_data, wanted_number):
     return result
 
 
+ordered_numbers = [-51, -12, -3, -3, -1, 2, 8, 13, 14, 14, 14, 21, 22, 23, 24, 25, 48, 63, 64, 70, 72, 78, 90, 102, 120]
+wanted_number = 8
+if wanted_number not in ordered_numbers:
+    print(None)
+else:
+
+    middle_float = len(ordered_numbers) / 2
+    middle = int(round(middle_float, 0))
+    right_margin = -1
+    left_margin = 0
+
+    while True:
+        if wanted_number == ordered_numbers[middle]:
+            index = ordered_numbers[middle]
+            break
+        else:
+            if wanted_number > ordered_numbers[middle]:
+                left_margin = middle
+                middle_float = len(ordered_numbers[middle:left_margin]) / 2
+                middle = middle + int(round(middle_float, 0))
+            if wanted_number < ordered_numbers[middle]:
+                right_margin = middle
+                middle_float = len(ordered_numbers[left_margin:middle]) / 2
+                middle = middle - int(round(middle_float, 0))
+
+print(index)
+
+
+
 def main():
     sequential_data = read_data("sequential.json", "unordered_numbers")
     wanted_number = 3
